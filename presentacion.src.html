@@ -254,6 +254,27 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   .ring{display:none}
 }
 
+
+/* tecnologías: una sección por opción */
+.tsteps{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.tsteps span{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:100px;border:1px solid var(--border);color:var(--ink-faint)}
+.tsteps span.on{background:var(--grad);border-color:transparent;color:#fff}
+.techs{display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center}
+.techs .tc{padding:28px;gap:16px}
+.techs .tc h3{font-size:28px}
+.techs .meter{font-size:14px}
+.techs .meter .row{margin-bottom:8px}
+.tpts{list-style:none;margin-top:18px}
+.tpts li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink-2);line-height:1.45}
+.tpts li:before{content:"✕";flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;border:1px solid var(--border);color:var(--ink-faint);margin-top:1px}
+.tpts.ok li:before{content:"✓";background:var(--grad);border:0;color:#fff}
+@media (max-width:980px){.techs{grid-template-columns:1fr;gap:16px}}
+@media (max-width:600px){
+  .tsteps{gap:4px;margin-bottom:12px;flex-wrap:nowrap}.tsteps span{font-size:8px;letter-spacing:.08em;padding:6px 8px;white-space:nowrap}
+  .tpts{margin-top:8px}.tpts li{padding:7px 0;font-size:13.5px}
+  .techs .tc{padding:16px;gap:10px}.techs .tc h3{font-size:19px}.techs .meter{font-size:12.5px}
+}
+
 /* ---------- celular (se presenta desde el teléfono) ---------- */
 @supports (height:100dvh){.slide{height:100dvh}}
 @media (max-width:600px){
@@ -383,45 +404,73 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   </div>
 </section>
 
-<!-- 04 TECNOLOGÍAS -->
-<section class="slide" data-name="Las 3 tecnologías">
+<!-- 04-06 TECNOLOGÍAS: una sección por opción -->
+<section class="slide" data-name="Opción 1 · Tradicional">
   <div class="wrap">
-    <div class="kicker" data-r>Para entender la lipopapada, hay que entender la máquina</div>
-    <h2 data-r="2">Tres tecnologías, <em>tres resultados</em> distintos</h2>
-    <div class="swipe">Desliza →</div>
-    <div class="tech" data-r="3">
-      <div class="tc">
+    <div class="tsteps" data-r><span class="on">Opción 1 · Tradicional</span><span class="">Opción 2 · Láser</span><span class="">Opción 3 · Endoláser</span></div>
+    <div class="techs">
+      <div>
+        <div class="kicker" data-r>Opción 1 de 3 · Para entender la lipopapada, hay que entender la máquina</div>
+        <h2 data-r="2">Liposucción <em>tradicional</em></h2>
+        <p class="lead" data-r="3">Cánula convencional que succiona con fuerza: daña el tejido y genera inflamación severa. No es un procedimiento mínimamente invasivo, ni fácil.</p>
+        <ul class="tpts" data-r="4"><li>Morados de 20 a 25 días</li><li>En cerca del 50% queda fibrosis: un lado más marcado que el otro</li><li>A los dos meses la zona todavía se ve morada</li><li>Casi todos terminan con la piel flácida</li><li>El resultado dura ~8 meses y se revierte</li></ul>
+      </div>
+      <div data-r="3"><div class="tc">
         <div class="tag">Opción 1</div>
-        <h3>Liposucción tradicional</h3>
-        <p class="how">Cánula convencional que succiona con fuerza: daña el tejido y genera inflamación severa.</p>
         <div class="meter">
           <div class="row"><span>Morados</span><b>20 – 25 días</b></div><div class="bar"><i style="width:92%"></i></div>
           <div class="row"><span>Riesgo de fibrosis</span><b>~50%</b></div><div class="bar"><i style="width:50%"></i></div>
           <div class="row"><span>Trata la flacidez</span><b>No</b></div>
         </div>
         <div class="see"><span>Así puede quedar</span><button class="pill" data-comp="fibrosis">Proceso con fibrosis</button><button class="pill" data-comp="infectado">Proceso infectado</button></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-name="Opción 2 · Láser">
+  <div class="wrap">
+    <div class="tsteps" data-r><span class="">Opción 1 · Tradicional</span><span class="on">Opción 2 · Láser</span><span class="">Opción 3 · Endoláser</span></div>
+    <div class="techs">
+      <div>
+        <div class="kicker" data-r>Opción 2 de 3</div>
+        <h2 data-r="2"><em>Láser</em></h2>
+        <p class="lead" data-r="3">También es una cánula, pero con una luz roja que reduce la fuerza: por eso cicatriza mejor y genera menos inflamación.</p>
+        <ul class="tpts" data-r="4"><li>Cicatrizado en 4 a 6 días</li><li>Menos fibrosis: cerca del 4%</li><li>Solo puede trabajar la papada</li><li>Dura 2 a 3 años, y el reborde se pierde más o menos al año</li></ul>
       </div>
-      <div class="tc">
+      <div data-r="3"><div class="tc">
         <div class="tag">Opción 2</div>
-        <h3>Láser</h3>
-        <p class="how">También es una cánula, con una luz que reduce la fuerza necesaria. Cicatriza mejor, pero solo trabaja la papada.</p>
         <div class="meter">
           <div class="row"><span>Cicatrización</span><b>4 – 6 días</b></div><div class="bar"><i style="width:22%"></i></div>
           <div class="row"><span>Riesgo de fibrosis</span><b>~4%</b></div><div class="bar"><i style="width:6%"></i></div>
           <div class="row"><span>Trata la flacidez</span><b>No</b></div>
+          <div class="row"><span>Zonas</span><b>Solo papada</b></div>
         </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-name="Opción 3 · Endoláser">
+  <div class="wrap">
+    <div class="tsteps" data-r><span class="">Opción 1 · Tradicional</span><span class="">Opción 2 · Láser</span><span class="on">Opción 3 · Endoláser</span></div>
+    <div class="techs">
+      <div>
+        <div class="kicker" data-r>Opción 3 de 3 · La que usa el Dr.</div>
+        <h2 data-r="2">Endoláser · <em>Endolifting</em></h2>
+        <p class="lead" data-r="3">Ya no es una cánula sino una guía que no daña el tejido. El Dr. la utiliza de manera dual: hace la lipopapada y moldea la grasa.</p>
+        <ul class="tpts ok" data-r="4"><li>Solo hay 12 equipos en Colombia</li><li>No genera hematomas ni fibrosis</li><li>Al otro día te levantas como si no hubiera pasado nada</li><li>Trata la flacidez y estira la piel</li></ul>
       </div>
-      <div class="tc best">
+      <div data-r="3"><div class="tc best">
         <div class="tag">Opción 3 · La que usa el Dr.</div>
-        <h3>Endoláser · Endolifting</h3>
-        <p class="how">Ya no es una cánula sino una guía que no daña el tejido. Retira grasa, moldea y tensa la piel. Solo hay 12 equipos en Colombia.</p>
         <div class="meter">
           <div class="row"><span>Recuperación</span><b>Al día siguiente</b></div><div class="bar g"><i style="width:4%"></i></div>
           <div class="row"><span>Hematomas y fibrosis</span><b>No genera</b></div><div class="bar g"><i style="width:1.5%"></i></div>
           <div class="row"><span>Trata la flacidez</span><b class="gold">Sí</b></div>
+          <div class="row"><span>Zonas</span><b class="gold">Rostro y cuello completos</b></div>
         </div>
         <div class="see"><button class="pill pri" id="toCases">Ver casos de éxito →</button></div>
-      </div>
+      </div></div>
     </div>
   </div>
 </section>
