@@ -253,6 +253,73 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   .v-head{top:66px}.v-tools{bottom:14px}.credit,.hint{display:none}
   .ring{display:none}
 }
+
+/* ---------- celular (se presenta desde el teléfono) ---------- */
+@supports (height:100dvh){.slide{height:100dvh}}
+@media (max-width:600px){
+  body{font-size:14px}
+  .top{height:56px;padding:0 16px}
+  .brand{font-size:14px}
+  .tgl{padding:7px 12px;font-size:9px;letter-spacing:.16em}
+  .slide{padding:66px 16px 78px;align-items:flex-start;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+  .slide .wrap{margin:0}
+  .nav{height:66px;gap:10px;background:linear-gradient(transparent,var(--bg) 45%)}
+  .nav .arrow{width:38px;height:38px}
+  .dots{gap:5px}.dots button{width:6px;height:6px}.dots button.on{width:16px}
+  .kicker{font-size:9.5px;letter-spacing:.22em;margin-bottom:10px}
+  h2{font-size:27px;margin-bottom:12px;letter-spacing:-.04em}
+  .lead{font-size:14.5px;line-height:1.55}
+  .small{font-size:12px}
+  .card{padding:16px 16px;border-radius:16px}
+  .card h3{font-size:18px}
+  .card p{font-size:13.5px}
+  /* portada */
+  .cover h1{font-size:54px}
+  .cover h1 span{font-size:10px;letter-spacing:.24em;margin-top:14px}
+  .cover .sub{font-size:15px;margin-top:16px}
+  .cover .sig{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .cover .sig div{min-width:0;padding:12px 10px 10px 14px;border-radius:14px}
+  .cover .sig b{font-size:21px}
+  .cover .sig small{font-size:8px;letter-spacing:.14em}
+  /* especialista */
+  .two{gap:14px}
+  .stat{padding:10px 0}.stat b{font-size:27px}.stat span{font-size:13px}
+  .quote{font-size:27px}.quote:before{font-size:1.6em;margin-bottom:4px}
+  .myth{padding:10px 0;font-size:13.5px}
+  /* carruseles horizontales: una tarjeta por pantalla, se desliza de lado */
+  .tech,.cases,.c3,.steps3,.tl,.dual{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -16px;padding:4px 16px 14px;scrollbar-width:none;max-width:none}
+  .tech::-webkit-scrollbar,.cases::-webkit-scrollbar,.c3::-webkit-scrollbar,.steps3::-webkit-scrollbar,.tl::-webkit-scrollbar,.dual::-webkit-scrollbar{display:none}
+  .tech>*,.c3>*,.steps3>*,.tl>*,.dual>.card{flex:0 0 84%;scroll-snap-align:start}
+  .cases>*{flex:0 0 76%;scroll-snap-align:start}
+  .dual .plus{display:none}
+  .dual .card{min-height:0}
+  .swipe{display:flex!important}
+  .tc{padding:18px;gap:9px}.tc h3{font-size:21px}.tc .how{min-height:0;font-size:13.5px}
+  .vs{gap:10px}.vs .card li{padding:7px 0;font-size:13.5px}
+  .tl{margin-top:16px}.tl div{padding:16px}
+  .dur{padding:18px;gap:18px}.dur .r{grid-template-columns:1fr 120px;gap:8px}.dur .r b{white-space:nowrap}.dur .r b{font-size:21px}
+  .cta .price{font-size:64px}
+  .steps3{margin-top:22px;text-align:left}
+  /* fotos de complicaciones: hoja a pantalla completa */
+  .modal{padding:0;align-items:stretch}
+  .mbox{max-height:none;height:100dvh;border-radius:0;display:flex;flex-direction:column}
+  .mhead{padding:12px}
+  .tabs{flex:1;margin-right:10px}.tabs button{flex:1;padding:8px 6px;font-size:12px}
+  .mbody{padding:14px 16px 24px;gap:14px;overflow-y:auto}
+  .mbody img{max-height:52dvh}
+  .mtxt h3{font-size:23px}.mtxt p{font-size:13.5px}
+  /* 3D */
+  .s3d .stage{grid-template-rows:56dvh 1fr}
+  .v-head{top:58px;left:16px;right:16px}
+  .v-head h2{font-size:24px;margin-bottom:6px}
+  .patient{font-size:9px;letter-spacing:.2em}.patient input{font-size:15px;width:170px}
+  .v-tools{left:12px;right:12px;bottom:10px;gap:6px}
+  .chip{padding:7px 11px;font-size:11px}
+  .pin .lbl{font-size:11px;padding:4px 9px}
+  .panel{padding:14px 12px 84px}
+  .z{padding:9px 8px}
+}
+.swipe{display:none;align-items:center;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin:2px 0 6px}
 </style>
 </head>
 <body>
@@ -321,6 +388,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   <div class="wrap">
     <div class="kicker" data-r>Para entender la lipopapada, hay que entender la máquina</div>
     <h2 data-r="2">Tres tecnologías, <em>tres resultados</em> distintos</h2>
+    <div class="swipe">Desliza →</div>
     <div class="tech" data-r="3">
       <div class="tc">
         <div class="tag">Opción 1</div>
@@ -363,6 +431,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   <div class="wrap">
     <div class="kicker" data-r>Opción 3 · Gold Face HD · casos de éxito</div>
     <h2 data-r="2">Compara en cualquier lugar de Colombia: <em>mira los resultados</em></h2>
+    <div class="swipe">Desliza →</div>
     <div class="cases" data-r="3" id="cases"></div>
     <p class="small" data-r="4" style="margin-top:14px">Más resultados en Instagram · <span class="gold">@dr.cristhiansq</span></p>
   </div>
@@ -374,6 +443,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
     <div class="kicker" data-r>La técnica dual</div>
     <h2 data-r="2">No es una técnica nueva: <em>es la unión de dos</em></h2>
     <p class="lead" data-r="2" style="margin-bottom:34px">El Dr. Cristhian unió dos técnicas en un solo procedimiento. Por eso no solo retira grasa: también trata la flacidez y estimula tu propio colágeno.</p>
+    <div class="swipe">Desliza →</div>
     <div class="dual" data-r="3">
       <div class="card"><div class="num">01</div><h3>Endoláser</h3><p>Retira y moldea la grasa de papada, cuello y rostro sin dañar el tejido.</p></div>
       <div class="plus">+</div>
@@ -438,6 +508,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   <div class="wrap">
     <div class="kicker" data-r>Saber con quién y dónde</div>
     <h2 data-r="2">Tu seguridad <em>no se negocia</em></h2>
+    <div class="swipe">Desliza →</div>
     <div class="cards c3" data-r="3">
       <div class="card"><div class="num">01 · QUIÉN</div><h3>Médico especialista</h3><p>No lo debe hacer un odontólogo ni una esteticista. Pide siempre las credenciales: aquí puedes verificarlas.</p></div>
       <div class="card"><div class="num">02 · CON QUIÉN</div><h3>Equipo completo</h3><p>El Dr. nunca trabaja solo: lo acompaña su equipo para prevenir infecciones. Los casos de infección o flacidez casi siempre vienen de alguien que operó solo.</p></div>
@@ -457,6 +528,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
     <div class="kicker" data-r>Después del procedimiento</div>
     <h2 data-r="2">Te levantas como si <em>no hubiera pasado nada</em></h2>
     <p class="lead" data-r="2">Solo 3 incisiones de medio centímetro — una en el mentón y una al lado de cada oreja. Sin puntos. Puedes ir solo y manejar de regreso.</p>
+    <div class="swipe">Desliza →</div>
     <div class="tl" data-r="3">
       <div><b>Día 0</b><p>Procedimiento de 1 hora. Sales caminando, sin dolor.</p></div>
       <div><b>Días 1 – 3</b><p>Faja 24 horas: te la entregamos nosotros (valor de más de $100.000). Si debes trabajar al día 2, te damos indicaciones.</p></div>
@@ -514,6 +586,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
     <h2 data-r="2">Aparta tu cupo con</h2>
     <div class="price" data-r="2">$150.000</div>
     <p class="lead" data-r="3" style="margin-top:22px">El Dr. atiende solo 4 pacientes por ciudad en cada visita. Con tu separación definimos la fecha y realizamos tu procedimiento.</p>
+    <div class="swipe">Desliza →</div>
     <div class="steps3" data-r="4">
       <div class="card"><div class="num">01</div><h3>Separas</h3><p>Nata te explica cómo separar tu cupo con $150.000.</p></div>
       <div class="card"><div class="num">02</div><h3>Definimos fecha</h3><p>Elegimos juntos el día de tu procedimiento en tu ciudad.</p></div>
@@ -586,7 +659,7 @@ document.getElementById('tgl').onclick=()=>{const r=document.documentElement,t=r
 const qt=new URLSearchParams(location.search).get('tema');setTimeout(()=>{const qc=new URLSearchParams(location.search).get('comp');if(qc)openComp(qc)},300);if(qt)document.documentElement.dataset.theme=qt;
 document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
 addEventListener('keydown',e=>{if(e.target.matches('input,[contenteditable]'))return;const mo=document.getElementById('comp');if(mo&&mo.classList.contains('open')){if(e.key==='Escape')closeComp();if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const on=mo.querySelector('.tabs .on');openComp(on&&on.dataset.t==='fibrosis'?'infectado':'fibrosis')}return}if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}});
-let tx=null;addEventListener('touchstart',e=>{tx=e.target.closest('.viewer')?null:e.touches[0].clientX},{passive:true});
+let tx=null;addEventListener('touchstart',e=>{tx=e.target.closest('.viewer,.panel,.modal,.tech,.cases,.c3,.steps3,.tl,.dual')?null:e.touches[0].clientX},{passive:true});
 addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null});
 
 
@@ -734,13 +807,13 @@ viewer.addEventListener('pointermove',e=>{if(!drag)return;tyaw=drag.yaw-(e.clien
 addEventListener('pointerup',()=>drag=null);
 viewer.addEventListener('wheel',e=>{e.preventDefault();tdist=Math.max(7.5,Math.min(17,tdist+e.deltaY*.006))},{passive:false});
 
-function size(){const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;if(w>700)cam.setViewOffset(w,h,-w*.17,0,w,h);else cam.clearViewOffset();cam.updateProjectionMatrix();if(STILL)frame(performance.now())}
+let MOB=1;function size(){const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;MOB=w<700?1.7:1;if(w>700)cam.setViewOffset(w,h,-w*.17,0,w,h);else cam.setViewOffset(w,h,0,-h*.15,w,h);cam.updateProjectionMatrix();if(STILL)frame(performance.now())}
 addEventListener('resize',size);
 const STILL=!!new URLSearchParams(location.search).get('still');let running=false,last=performance.now();const v3=new THREE.Vector3(),tc=new THREE.Vector3();
 function frame(t){const dt=Math.min(.05,(t-last)/1000);last=t;idle+=dt;
   if(showAll&&active<0&&!drag&&idle>2&&!incOn)tyaw+=dt*.1*Math.sin(t/4000);
   const k=STILL?1:1-Math.pow(.02,dt);yaw+=(tyaw-yaw)*k;pitch+=(tpitch-pitch)*k;dist+=(tdist-dist)*k;
-  cam.position.set(target.x+Math.sin(yaw)*Math.cos(pitch)*dist,target.y+Math.sin(pitch)*dist,target.z+Math.cos(yaw)*Math.cos(pitch)*dist);cam.lookAt(target);
+  const D=dist*MOB;cam.position.set(target.x+Math.sin(yaw)*Math.cos(pitch)*D,target.y+Math.sin(pitch)*D,target.z+Math.cos(yaw)*Math.cos(pitch)*D);cam.lookAt(target);
   U.time.value=t/1000;U.incOn.value+=((incOn?1:0)-U.incOn.value)*k;
   const pulse=.85+.15*Math.sin(t/260);
   for(let i=0;i<NP;i++){const zi=pz[i];let w=0;if(enabled[zi]){w=active<0?(ZONAS[zi].id==='piel'?.4:.5):(zi===active?pulse:.14)}if(incOn)w*=.35;U.pw.value[i]+=(w-U.pw.value[i])*k}
