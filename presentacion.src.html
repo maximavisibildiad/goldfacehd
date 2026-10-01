@@ -776,7 +776,7 @@ const NP=pa.length;while(pa.length<MAX){pa.push(new THREE.Vector3());pb.push(new
 // anclas visibles para las zonas grandes
 anchors.forEach(a=>{const id=ZONAS[a.zi].id;if(id==='cuello'){const s=snap([0.7,-1.5,1.0]);a.p=s.p;a.n=s.n}if(id==='piel'){const s=snap([-0.9,-0.1,1.5]);a.p=s.p;a.n=s.n;a.side=1}});
 // incisiones: mentón + al lado de cada oreja (unión del lóbulo con la mejilla). El modelo no es simétrico: cada lado tiene su punto.
-const INC=[snap([0,-0.72,1.95]),snap([1.05,0.75,0.4]),snap([-1.3,0.72,0.52])];
+const INC=[snap([0,-0.72,1.95]),{p:new THREE.Vector3(1.22,0.75,0.58),n:new THREE.Vector3(1,0,.25).normalize()},{p:new THREE.Vector3(-1.42,0.75,0.53),n:new THREE.Vector3(-1,0,.25).normalize()}];
 
 const U={pa:{value:pa},pb:{value:pb},pr:{value:pr},pt:{value:pt},pw:{value:new Array(MAX).fill(0)},np:{value:NP},time:{value:0},
   inc:{value:INC.map(i=>i.p)},incOn:{value:0},zc:{value:new THREE.Color()},rim:{value:new THREE.Color()},incC:{value:new THREE.Color()}};
@@ -844,7 +844,7 @@ function focus(i){active=i;showAll=false;incOn=false;const v=ZONAS[i].view;tyaw=
   const el=zl.children[i];if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:'smooth'})}
 window.gfFocus=focus;
 document.getElementById('all').onclick=()=>{stopTour();active=-1;showAll=true;incOn=false;tyaw=.5;tpitch=-.08;tdist=13.5;refresh()};
-document.getElementById('inc').onclick=()=>{stopTour();incOn=!incOn;active=-1;showAll=true;if(incOn){tyaw=1.0;tpitch=-.12;tdist=9.5}refresh()};
+document.getElementById('inc').onclick=()=>{stopTour();incOn=!incOn;active=-1;showAll=true;if(incOn){tyaw=1.0;tpitch=-.12;tdist=9.5;idle=0;incT0=performance.now()-2200*Math.asin(1/1.1)}refresh()};
 let tourT=null;const tourBtn=document.getElementById('tour');
 function stopTour(){if(tourT){clearInterval(tourT);tourT=null;tourBtn.textContent='▶ Recorrido';tourBtn.classList.remove('on')}}
 tourBtn.onclick=()=>{if(tourT){stopTour();return}const list=ZONAS.map((_,i)=>i).filter(i=>enabled[i]);if(!list.length)return;
@@ -852,7 +852,7 @@ tourBtn.onclick=()=>{if(tourT){stopTour();return}const list=ZONAS.map((_,i)=>i).
   tourT=setInterval(()=>{k=(k+1)%list.length;focus(list[k])},3200)};
 
 /* girar y acercar */
-let drag=null,idle=0;
+let drag=null,idle=0,incT0=0;
 viewer.addEventListener('pointerdown',e=>{if(e.target.closest('.pin,.chip,input'))return;drag={x:e.clientX,y:e.clientY,yaw:tyaw,pitch:tpitch};try{viewer.setPointerCapture(e.pointerId)}catch(_){}});
 viewer.addEventListener('pointermove',e=>{if(!drag)return;tyaw=drag.yaw-(e.clientX-drag.x)*.006;tpitch=Math.max(-.7,Math.min(.45,drag.pitch+(e.clientY-drag.y)*.004));idle=0});
 addEventListener('pointerup',()=>drag=null);
@@ -863,6 +863,8 @@ addEventListener('resize',size);
 const STILL=!!new URLSearchParams(location.search).get('still');let running=false,last=performance.now();const v3=new THREE.Vector3(),tc=new THREE.Vector3();
 function frame(t){const dt=Math.min(.05,(t-last)/1000);last=t;idle+=dt;
   if(showAll&&active<0&&!drag&&idle>2&&!incOn)tyaw+=dt*.1*Math.sin(t/4000);
+  // 3 incisiones: gira solo de un lado al otro para mostrar que las dos de las orejas son iguales
+  if(incOn&&!drag&&!STILL&&idle>1.2)tyaw=1.1*Math.sin((t-incT0)/2200);
   const k=STILL?1:1-Math.pow(.02,dt);yaw+=(tyaw-yaw)*k;pitch+=(tpitch-pitch)*k;dist+=(tdist-dist)*k;
   const D=dist*MOB;cam.position.set(target.x+Math.sin(yaw)*Math.cos(pitch)*D,target.y+Math.sin(pitch)*D,target.z+Math.cos(yaw)*Math.cos(pitch)*D);cam.lookAt(target);
   U.time.value=t/1000;U.incOn.value+=((incOn?1:0)-U.incOn.value)*k;
