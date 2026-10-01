@@ -848,7 +848,7 @@ let tourT=null;const tourBtn=document.getElementById('tour');
 function stopTour(){if(tourT){clearInterval(tourT);tourT=null;tourBtn.textContent='▶ Recorrido';tourBtn.classList.remove('on')}}
 tourBtn.onclick=()=>{if(tourT){stopTour();return}const list=ZONAS.map((_,i)=>i).filter(i=>enabled[i]);if(!list.length)return;
   tourBtn.textContent='❚❚ Pausar';tourBtn.classList.add('on');let k=Math.max(0,list.indexOf(active)+1)%list.length;focus(list[k]);
-  tourT=setInterval(()=>{k=(k+1)%list.length;focus(list[k])},5000)};
+  tourT=setInterval(()=>{k=(k+1)%list.length;focus(list[k])},3200)};
 
 /* girar y acercar */
 let drag=null,idle=0;
