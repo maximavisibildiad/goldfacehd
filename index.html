@@ -218,6 +218,29 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
 .sumbox{margin-top:12px;padding:14px 16px;border:1px solid var(--border);border-radius:14px;font-size:13px;color:var(--ink-2);line-height:1.55;background:var(--surface-2)}
 .sumbox b{color:var(--accent)}
 
+
+/* opción 1: así puede quedar · opción 3: casos */
+.see{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:6px}
+.see span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;width:100%}
+.pill{font-size:12px;font-weight:700;padding:8px 13px;border-radius:100px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-2);transition:all .2s}
+.pill:hover{border-color:var(--accent);color:var(--accent)}
+.pill.pri{background:var(--grad);border:0;color:#fff}
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(8,8,14,.55);backdrop-filter:blur(8px)}
+.modal.open{display:flex}
+.mbox{width:min(1040px,100%);max-height:calc(100vh - 48px);overflow:auto;background:var(--bg);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.35)}
+.mhead{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--border)}
+.tabs{display:flex;gap:6px;background:var(--surface-2);border:1px solid var(--border);border-radius:100px;padding:4px}
+.tabs button{font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:100px;color:var(--ink-dim)}
+.tabs button.on{background:var(--grad);color:#fff}
+.mx{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);color:var(--ink-dim)}
+.mbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:24px;align-items:center}
+.mbody img{width:100%;max-height:calc(100vh - 170px);object-fit:contain;border-radius:16px;background:#000}
+.mtxt h3{font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.04em;line-height:1.08;margin-bottom:12px}
+.mtxt p{font-size:15px;line-height:1.6;color:var(--ink-2);margin-bottom:14px}
+.mtxt ul{list-style:none}
+.mtxt li{padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink-2);display:flex;gap:10px}
+.mtxt li:before{content:"✕";color:var(--ink-faint);font-size:11px;font-weight:700;margin-top:3px}
+@media (max-width:980px){.mbody{grid-template-columns:1fr}}
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .slide{padding:76px 18px 92px;align-items:flex-start;overflow-y:auto}
@@ -310,6 +333,7 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
           <div class="row"><span>Riesgo de fibrosis</span><b>~50%</b></div><div class="bar"><i style="width:50%"></i></div>
           <div class="row"><span>Trata la flacidez</span><b>No</b></div>
         </div>
+        <div class="see"><span>Así puede quedar</span><button class="pill" data-comp="fibrosis">Proceso con fibrosis</button><button class="pill" data-comp="infectado">Proceso infectado</button></div>
       </div>
       <div class="tc">
         <div class="tag">Opción 2</div>
@@ -330,12 +354,23 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
           <div class="row"><span>Hematomas y fibrosis</span><b>No genera</b></div><div class="bar g"><i style="width:1.5%"></i></div>
           <div class="row"><span>Trata la flacidez</span><b class="gold">Sí</b></div>
         </div>
+        <div class="see"><button class="pill pri" id="toCases">Ver casos de éxito →</button></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 TÉCNICA DUAL -->
+<!-- 05 CASOS DE ÉXITO (apenas se nombra la opción 3) -->
+<section class="slide" data-name="Casos de éxito">
+  <div class="wrap">
+    <div class="kicker" data-r>Opción 3 · Gold Face HD · casos de éxito</div>
+    <h2 data-r="2">Compara en cualquier lugar de Colombia: <em>mira los resultados</em></h2>
+    <div class="cases" data-r="3" id="cases"></div>
+    <p class="small" data-r="4" style="margin-top:14px">Más resultados en Instagram · <span class="gold">@dr.cristhiansq</span></p>
+  </div>
+</section>
+
+<!-- 06 TÉCNICA DUAL -->
 <section class="slide" data-name="La técnica dual">
   <div class="wrap">
     <div class="kicker" data-r>La técnica dual</div>
@@ -418,16 +453,6 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
   </div>
 </section>
 
-<!-- 09 CASOS -->
-<section class="slide" data-name="Resultados reales">
-  <div class="wrap">
-    <div class="kicker" data-r>Resultados reales</div>
-    <h2 data-r="2">Compara en cualquier lugar de Colombia: <em>mira los resultados</em></h2>
-    <div class="cases" data-r="3" id="cases"></div>
-    <p class="small" data-r="4" style="margin-top:14px">Más resultados en Instagram · <span class="gold">@dr.cristhiansq</span></p>
-  </div>
-</section>
-
 <!-- 11 RECUPERACIÓN -->
 <section class="slide" data-name="Tu recuperación">
   <div class="wrap">
@@ -501,6 +526,24 @@ h1 em,h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:tex
 
 </main>
 
+
+<div class="modal" id="comp" aria-hidden="true">
+  <div class="mbox">
+    <div class="mhead">
+      <div class="tabs"><button data-t="fibrosis">Proceso con fibrosis</button><button data-t="infectado">Proceso infectado</button></div>
+      <button class="mx" id="mx" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="mbody">
+      <img id="mimg" alt="">
+      <div class="mtxt">
+        <div class="kicker">Liposucción tradicional · así puede quedar</div>
+        <h3 id="mh"></h3>
+        <p id="mp"></p>
+        <ul id="ml"></ul>
+      </div>
+    </div>
+  </div>
+</div>
 <nav class="nav">
   <button class="arrow" id="prev" aria-label="Anterior">←</button>
   <div class="dots" id="dots"></div>
@@ -548,12 +591,33 @@ function go(i){cur=Math.max(0,Math.min(slides.length-1,i));deck.style.transform=
   try{history.replaceState(null,'','#'+(cur+1))}catch(e){}
   if(window.on3D)window.on3D(slides[cur].classList.contains('s3d'));}
 document.getElementById('tgl').onclick=()=>{const r=document.documentElement,t=r.dataset.theme==='dark'?'light':'dark';r.dataset.theme=t;try{localStorage.setItem('gfhd:theme',t)}catch(e){}if(window.on3DTheme)window.on3DTheme()};
-const qt=new URLSearchParams(location.search).get('tema');if(qt)document.documentElement.dataset.theme=qt;
+const qt=new URLSearchParams(location.search).get('tema');setTimeout(()=>{const qc=new URLSearchParams(location.search).get('comp');if(qc)openComp(qc)},300);if(qt)document.documentElement.dataset.theme=qt;
 document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
-addEventListener('keydown',e=>{if(e.target.matches('input,[contenteditable]'))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}});
+addEventListener('keydown',e=>{if(e.target.matches('input,[contenteditable]'))return;const mo=document.getElementById('comp');if(mo&&mo.classList.contains('open')){if(e.key==='Escape')closeComp();if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const on=mo.querySelector('.tabs .on');openComp(on&&on.dataset.t==='fibrosis'?'infectado':'fibrosis')}return}if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}});
 let tx=null;addEventListener('touchstart',e=>{tx=e.target.closest('.viewer')?null:e.touches[0].clientX},{passive:true});
 addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null});
 
+
+/* ===================== OPCIÓN 1: ASÍ PUEDE QUEDAR ===================== */
+// Fotos en casos/: complicacion-fibrosis.jpg y complicacion-infectado.jpg. Textos = lo que explica el Dr. en la valoración.
+const COMP={
+ fibrosis:{img:'casos/complicacion-fibrosis.jpg',h:'Proceso con fibrosis',
+  p:'La cánula tradicional daña el tejido y genera inflamación severa. Esa inflamación produce fibrosis: con liposucción tradicional, cerca del 50% de los pacientes termina con este resultado.',
+  l:['Bultos firmes y visibles en la zona del mentón','Textura irregular y piel tirante entre mentón y cuello','Un lado queda más marcado que el otro','A los dos meses la zona todavía se ve morada']},
+ infectado:{img:'casos/complicacion-infectado.jpg',h:'Proceso infectado',
+  p:'Cuando el procedimiento se hace como "de garaje" — una sola persona, sin equipo y reutilizando insumos — aparecen las infecciones. Por eso siempre hay que preguntar: ¿con quién y dónde me lo van a hacer?',
+  l:['Hinchazón y moretones por mala aplicación','Pequeñas heridas y signos de inflamación','Endurecimiento de la piel','Morados que duran de 20 a 25 días']},
+};
+const modal=document.getElementById('comp');
+function openComp(t){const c=COMP[t];document.getElementById('mimg').src=c.img;document.getElementById('mimg').alt=c.h;
+  document.getElementById('mh').textContent=c.h;document.getElementById('mp').textContent=c.p;
+  document.getElementById('ml').innerHTML=c.l.map(x=>'<li>'+x+'</li>').join('');
+  modal.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));modal.classList.add('open');modal.setAttribute('aria-hidden','false')}
+function closeComp(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+document.querySelectorAll('[data-comp]').forEach(b=>b.onclick=()=>openComp(b.dataset.comp));
+modal.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>openComp(b.dataset.t));
+document.getElementById('mx').onclick=closeComp;modal.onclick=e=>{if(e.target===modal)closeComp()};
+document.getElementById('toCases').onclick=()=>go(cur+1);
 /* ===================== CASOS ===================== */
 const casesEl=document.getElementById('cases');
 CASOS.forEach((c,i)=>{const el=document.createElement('figure');el.className='case has';
