@@ -774,7 +774,8 @@ ZONAS.forEach((z,zi)=>{SHAPES[z.id].forEach(s=>{(s.m?[1,-1]:[1]).forEach(sx=>{
 const NP=pa.length;while(pa.length<MAX){pa.push(new THREE.Vector3());pb.push(new THREE.Vector3());pr.push(new THREE.Vector3(1,1,1));pt.push(0);pz.push(-1)}
 // anclas visibles para las zonas grandes
 anchors.forEach(a=>{const id=ZONAS[a.zi].id;if(id==='cuello'){const s=snap([0.7,-1.5,1.0]);a.p=s.p;a.n=s.n}if(id==='piel'){const s=snap([-0.9,-0.1,1.5]);a.p=s.p;a.n=s.n;a.side=1}});
-const INC=[snap([0,-0.72,1.95]),snap([1.02,0.3,0.05]),snap([-1.02,0.3,0.05])];
+// incisiones: mentón + al lado de cada oreja (unión del lóbulo con la mejilla). El modelo no es simétrico: cada lado tiene su punto.
+const INC=[snap([0,-0.72,1.95]),snap([1.05,0.75,0.4]),snap([-1.3,0.72,0.52])];
 
 const U={pa:{value:pa},pb:{value:pb},pr:{value:pr},pt:{value:pt},pw:{value:new Array(MAX).fill(0)},np:{value:NP},time:{value:0},
   inc:{value:INC.map(i=>i.p)},incOn:{value:0},zc:{value:new THREE.Color()},rim:{value:new THREE.Color()},incC:{value:new THREE.Color()}};
@@ -835,14 +836,14 @@ const pname=document.getElementById('pname');pname.value=store.get('pname')||'';
 function refresh(){
   [...zl.children].forEach((el,i)=>{el.classList.toggle('on',i===active);el.classList.toggle('off',!enabled[i])});
   const n=enabled.filter(Boolean).length,name=pname.value.trim();
-  document.getElementById('sum').innerHTML=`<b>${name?name+' · ':''}${n} de ${ZONAS.length} zonas</b> en un solo procedimiento de 1 hora. Solo 3 incisiones de 0,5 cm, sin puntos.`;
+  document.getElementById('sum').innerHTML=`<b>${name?name+' · ':''}${n} de ${ZONAS.length} zonas</b> en un solo procedimiento de 1 hora. Solo 3 incisiones de 0,5 cm — una en el mentón y una al lado de cada oreja —, sin puntos.`;
   document.getElementById('all').classList.toggle('on',showAll&&active<0&&!incOn);document.getElementById('inc').classList.toggle('on',incOn);
 }
 function focus(i){active=i;showAll=false;incOn=false;const v=ZONAS[i].view;tyaw=v[0];tpitch=v[1];tdist=v[2];refresh();
   const el=zl.children[i];if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:'smooth'})}
 window.gfFocus=focus;
 document.getElementById('all').onclick=()=>{stopTour();active=-1;showAll=true;incOn=false;tyaw=.5;tpitch=-.08;tdist=13.5;refresh()};
-document.getElementById('inc').onclick=()=>{stopTour();incOn=!incOn;active=-1;showAll=true;if(incOn){tyaw=.95;tpitch=-.28;tdist=10.5}refresh()};
+document.getElementById('inc').onclick=()=>{stopTour();incOn=!incOn;active=-1;showAll=true;if(incOn){tyaw=1.0;tpitch=-.12;tdist=9.5}refresh()};
 let tourT=null;const tourBtn=document.getElementById('tour');
 function stopTour(){if(tourT){clearInterval(tourT);tourT=null;tourBtn.textContent='▶ Recorrido';tourBtn.classList.remove('on')}}
 tourBtn.onclick=()=>{if(tourT){stopTour();return}const list=ZONAS.map((_,i)=>i).filter(i=>enabled[i]);if(!list.length)return;
